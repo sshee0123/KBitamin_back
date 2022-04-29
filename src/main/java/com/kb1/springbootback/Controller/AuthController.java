@@ -61,7 +61,7 @@ public class AuthController {
 	//@PreAuthorize("permitAll()")
 	@PostMapping("/signup")
 	public ResponseEntity<?> registerUser(@Validated @RequestBody SavedRequest signUpRequest) {
-		System.out.println("\n\n\n\n\nrequest seccess!!!!!!!!!!!! \n\n\n\n");
+		System.out.println("\n\n\n\n\nrequest seccess!!!!!!!! \n\n\n\n");
 		System.out.println(signUpRequest);
 
 		return null;
