@@ -11,5 +11,4 @@ public class SpringbootBackApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SpringbootBackApplication.class, args);
 	}
-
 }
