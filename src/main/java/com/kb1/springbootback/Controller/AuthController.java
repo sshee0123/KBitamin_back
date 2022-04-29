@@ -1,4 +1,4 @@
-package com.kb1.springbootback.Controller.model;
+package com.kb1.springbootback.Controller;
 
 import org.apache.catalina.authenticator.SavedRequest;
 import org.springframework.http.ResponseEntity;
@@ -61,7 +61,7 @@ public class AuthController {
 	//@PreAuthorize("permitAll()")
 	@PostMapping("/signup")
 	public ResponseEntity<?> registerUser(@Validated @RequestBody SavedRequest signUpRequest) {
-		System.out.println("\n\n\n\n\nrequest seccess!!!!!!!!!!!! \n\n\n\n");
+		System.out.println("\n\n\n\n\nrequest seccess!!!!!!!! \n\n\n\n");
 		System.out.println(signUpRequest);
 
 		return null;
