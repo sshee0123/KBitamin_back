@@ -1,4 +1,4 @@
-package com.kb1.springbootback.Controller.model;
+package com.kb1.springbootback.Controller;
 
 import org.apache.catalina.authenticator.SavedRequest;
 import org.springframework.http.ResponseEntity;
