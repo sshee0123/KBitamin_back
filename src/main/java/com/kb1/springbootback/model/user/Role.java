@@ -1,8 +1,6 @@
 package com.kb1.springbootback.model.user;
 
-import lombok.Getter;
-import lombok.Setter;
-
+import lombok.*;
 import javax.persistence.*;
 
 @Entity

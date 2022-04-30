@@ -1,8 +1,6 @@
 package com.kb1.springbootback.payload.request;
 
-import lombok.Getter;
-import lombok.Setter;
-
+import lombok.*;
 import javax.validation.constraints.NotBlank;
 
 @Getter

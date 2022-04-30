@@ -1,11 +1,8 @@
 package com.kb1.springbootback.payload.request;
 
-//import com.example.demo.model.user.ESex;
-import lombok.Getter;
-import lombok.Setter;
-
+import lombok.*;
 import javax.validation.constraints.*;
-import java.time.LocalDate;
+import java.time.*;
 import java.util.Date;
 import java.util.Set;
 

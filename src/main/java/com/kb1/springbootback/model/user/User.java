@@ -1,10 +1,7 @@
 package com.kb1.springbootback.model.user;
 
-import java.util.Date;
+import java.util.*;
 import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.Set;
-
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -22,40 +19,40 @@ import lombok.*;
 })
 public class User {
 
-	// PK: 유저 id
+	// PK: user_id
 	@Id
 	@Column(name = "user_id")
 	private String id;
 
-	// 유저 이름 ex)엄종석(교수님)
+	// user_name
 	@NotBlank
 	@Size(max = 20)
 	@Column(name = "user_name")
 	private String username;
 
-	// 이메일
+	// user_email
 	@NotBlank
 	@Email
 	@Size(max = 50)
 	@Column(name = "user_email")
 	private String email;
 
-	// 비밀번호
+	// user_password
 	@NotNull
 	@Size(max = 120)
 	@Column(name = "user_password")
 	private String password;
 
-	// 핸드폰 번호
+	// user_phoneNo
 	@Column(name = "user_phoneNo")
 	private String phone;
 
-	// 성별
+	// user_sex
 	@Enumerated(EnumType.STRING)
 	@Column(name = "user_sex")
 	private ESex sex;
 
-	// 생일
+	// user_birthDate
 	@Column(name = "user_birthDate")
 	private Date birthDate;
 
