@@ -77,7 +77,7 @@ public class AuthController {
 	@PreAuthorize("permitAll()")
 	@PostMapping("/signup")
 	public ResponseEntity<?> registerUser(@Validated @RequestBody SignupRequest signUpRequest) {
-		System.out.println("\n\n\n\n\nrequest seccess!!!!!!!! \n "+ signUpRequest.getId() +"\n\n\n");
+		System.out.println("\n\n\n\n\nrequest success!!!!!!!! \n "+ signUpRequest.getId() +"\n\n\n");
 		
 		if (userRepository.existsById(signUpRequest.getId())) {
 			System.out.println("existsById");
