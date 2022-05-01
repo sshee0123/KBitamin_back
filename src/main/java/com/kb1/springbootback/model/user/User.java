@@ -44,8 +44,8 @@ public class User {
 	private String password;
 
 	// user_phoneNo
-	@Column(name = "user_phoneNo")
-	private String phone;
+	// @Column(name = "user_phoneNo")
+	// private String phone;
 
 	// user_sex
 	@Enumerated(EnumType.STRING)

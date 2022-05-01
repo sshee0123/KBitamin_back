@@ -34,7 +34,7 @@ public class SignupRequest {
 
 
     // 핸드폰 번호
-    private String phone;
+    // private String phone;
 
     // 성별
     private String sex;

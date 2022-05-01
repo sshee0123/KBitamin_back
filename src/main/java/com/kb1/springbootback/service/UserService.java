@@ -35,7 +35,7 @@ public class UserService {
         user.setUsername(updatedUser.getUsername());
         user.setEmail(updatedUser.getEmail());
         user.setPassword(encoder.encode(updatedUser.getPassword()));
-        user.setPhone(updatedUser.getPhone()); // 삭제
+        // user.setPhone(updatedUser.getPhone()); // 삭제
         user.setSex(updatedUser.getSex());
         user.setBirthDate(updatedUser.getBirthDate());
 
