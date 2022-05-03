@@ -23,7 +23,6 @@ public class UserController {
     @GetMapping("/user")
     // @PreAuthorize("hasAnyRole('ROLE_USER, ROLE_ADMIN')")
     public ResponseEntity<User> getUserById(@RequestParam(value="id") String userid) {
-
         User user = userService.getUserById(userid);
 
         if(user == null) {

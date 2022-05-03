@@ -18,7 +18,20 @@ public class MedicineController{
 
     @Autowired
     private MedicineService medicineService;
+    /*
+    // Medicine 정보 가져오기
+    @GetMapping("/medicine")
+    // @PreAuthorize("hasAnyRole('ROLE_USER, ROLE_ADMIN')")
+    public ResponseEntity<Medicine> getMedicineByName(@RequestParam(value="name") String name) {
+      
+        Medicine name = medicineService.getMedicineByName(name);
 
+        if(name == null) {
+            throw new ResourceNotFoundException("This user does not already exist.");
+        }
+        return ResponseEntity.ok(name);
+    }
+    */
     // paging
     @GetMapping("/mediInfo")
     public ResponseEntity<List<Medicine>> getAllMedicines(){

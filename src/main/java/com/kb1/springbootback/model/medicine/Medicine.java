@@ -1,5 +1,4 @@
 package com.kb1.springbootback.model.medicine;
-
 import lombok.*;
 import java.io.Serializable;
 import javax.persistence.*;
@@ -61,4 +60,10 @@ public class Medicine implements Serializable {
     // @Transient
     // public List<Usage> usages = new ArrayList<>();
     // public List<Caution> cautions = new ArrayList<>();
+
+	public Medicine(String name, String formulation, String manufacturer) {
+		this.name = name;
+		this.formulation = formulation;
+		this.manufacturer = manufacturer;
+	}
 }
