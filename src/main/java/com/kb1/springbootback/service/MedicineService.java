@@ -1,5 +1,7 @@
 package com.kb1.springbootback.service;
 
+import java.util.List;
+
 import com.kb1.springbootback.model.medicine.Medicine;
 import com.kb1.springbootback.model.user.User;
 import com.kb1.springbootback.payload.response.MessageResponse;
@@ -25,5 +27,17 @@ public class MedicineService {
     public Boolean existsByName(String name) {
         return medicineRepository.existsByName(name);
     }
+
+    // medicine LIST 다 가져오기
+    public List<Medicine> getAllMedicines(){
+        return medicineRepository.findAll();
+    }
+
+    // 하나씩 다 가져오기
+    // public Medicine getMedicine(String name){
+    //     Medicine medicine = medicineRepository.findBy(name).orElseThrow(() -> new ResourceNotFoundException("Not exist Medicine Data by name : ["+name+"]"));
+        
+    //     return medicineRepository.save(medicine);
+    // }
 
 }

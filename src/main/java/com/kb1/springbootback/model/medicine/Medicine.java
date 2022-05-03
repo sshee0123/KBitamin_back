@@ -1,69 +1,65 @@
 package com.kb1.springbootback.model.medicine;
-
-import java.util.*;
-import java.time.LocalDateTime;
-import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import lombok.*;
+import java.io.Serializable;
+import javax.persistence.*;
+import java.util.*;
+import java.time.*;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 
-@Entity
 @Getter
 @Setter
-@AllArgsConstructor
-@Table(name = "Medicine", uniqueConstraints = {
-		@UniqueConstraint(columnNames = "name")
-        // ,@UniqueConstraint(columnNames = "user_email")
-})
-public class Medicine {
+@ToString
+@Entity
+@Table(name="medicine")
+@DynamicInsert
+@DynamicUpdate
+@NoArgsConstructor
+public class Medicine implements Serializable {
 
-	// PK: name
-	// @Id
-	@Column(name = "name")
-	private String name;
+    // 약 이름
+    @Id
+    @Column(name = "name")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private String name;
 
-	// formulation
-	// @NotBlank
-	// @Size(max = 100)
-	@Column(name = "formulation")
-	private String formulation;
+    // 제형
+    @Column(name = "formulation")
+    private String formulation;
 
-	// shape
-	// @NotBlank
-	// @Size(max = 50)
-	@Column(name = "shape")
-	private String shape;
+    // 모양
+    @Column(name = "shape")
+    private String shape;
 
-	// manufacturer
-	// @NotNull
-	// @Size(max = 120)
-	@Column(name = "manufacturer")
-	private String manufacturer;
+    // 제조업체
+    @Column(name = "manufacturer")
+    private String manufacturer;
 
-	// efficacy
-	@Column(name = "efficacy")
-	private String efficacy;
+    // 유효성분
+    @Column(name = "ingredient")
+    private String ingredient;
 
-	// image_url
-	@Column(name = "image_url")
-	private String image_url;
+    // 효능
+    @Column(name = "efficacy")
+    private String efficacy;
 
-	// color
-	@Column(name = "color")
-	private String color;
+    // 이미지
+    @Column(name = "image_url")
+    private String imageUrl;
 
-	// divide_line
-	@Column(name = "divide_line")
-	private String divide_line;
+    // 색상
+    @Column(name = "color")
+    private String color;
 
-	// divide_line
-	@Column(name = "ingredient")
-	private String ingredient;
+    // 분할선
+    @Column(name = "divide_line")
+    private String divideLine;
 
-	public Medicine() {
-	}
+    // 확인
+    // @OneToMany(mappedBy = "name", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    // @Transient
+    // public List<Usage> usages = new ArrayList<>();
+    // public List<Caution> cautions = new ArrayList<>();
 
 	public Medicine(String name, String formulation, String manufacturer) {
 		this.name = name;
