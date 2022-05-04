@@ -5,7 +5,7 @@ import java.util.List;
 import com.kb1.springbootback.model.medicine.Medicine;
 import com.kb1.springbootback.model.user.User;
 import com.kb1.springbootback.payload.response.MessageResponse;
-import com.kb1.springbootback.repository.user.MedicineRepository;
+import com.kb1.springbootback.repository.medicine.MedicineRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -29,8 +29,11 @@ public class MedicineService {
     }
 
     // medicine LIST 다 가져오기
-    public List<Medicine> getAllMedicines(){
-        return medicineRepository.findAll();
+    public List<Medicine> findAll(){
+        List<Medicine> list = medicineRepository.findAll();
+        System.out.println("medicine LIST 다 가져오기");
+        System.out.println("약 이름 ? "+list.get(0).getName());
+        return list;
     }
 
     // 하나씩 다 가져오기

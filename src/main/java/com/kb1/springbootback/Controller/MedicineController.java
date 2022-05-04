@@ -33,10 +33,10 @@ public class MedicineController{
     }
     */
     // paging
-    @GetMapping("/mediInfo")
+    @GetMapping("/medicine/mediInfo")
     public ResponseEntity<List<Medicine>> getAllMedicines(){
         System.out.println("\n\n\n\n\n\n\n mapping mediINfo?????? ");
-        return ResponseEntity.ok(medicineService.getAllMedicines());
+        return ResponseEntity.ok(medicineService.findAll());
     }
 
     // crud 
