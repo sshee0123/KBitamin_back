@@ -32,7 +32,7 @@ public class MedicineService {
     public List<Medicine> findAll(){
         List<Medicine> list = medicineRepository.findAll();
         System.out.println("medicine LIST 다 가져오기");
-        System.out.println("약 이름 ? "+list.get(0).getName());
+        
         return list;
     }
 

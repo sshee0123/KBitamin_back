@@ -43,7 +43,7 @@ public class UserController {
         //     throw new ResourceNotFoundException("Error: Email is already in use!");
         // }
 
-        System.out.println("\n\n\n\n\n\n\n update : userid? "+userId);
+        System.out.println("\n\n\n\n\n\n\n update : userid? "+updatedUser.getBirthDate());
         return ResponseEntity.ok(userService.updateUserInfo(userId, updatedUser));
     }
 
