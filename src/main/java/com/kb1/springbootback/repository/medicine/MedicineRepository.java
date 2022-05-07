@@ -16,11 +16,11 @@ import org.springframework.stereotype.Repository;
 public interface MedicineRepository extends JpaRepository<Medicine, Long> {
 	// Optional<Medicine> findByMedicinename(String username);
 
-	Boolean existsByName(String name);
+	public Boolean existsByName(String name);
 
-	Optional<Medicine> findByName(String name);
+	public Optional<Medicine> findByName(String name);
 
-	Medicine findAllByName(String name);
+	public Medicine findAllByName(String name);
 
-    List<Medicine> findAll();
+    public List<Medicine> findAll();
 }
