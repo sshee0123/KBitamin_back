@@ -3,7 +3,6 @@ import lombok.*;
 import java.io.Serializable;
 import javax.persistence.*;
 import java.util.*;
-import java.time.*;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
@@ -55,7 +54,6 @@ public class Medicine implements Serializable {
     @Column(name = "divide_line")
     private String divideLine;
 
-    // 확인
     // @OneToMany(mappedBy = "name", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     // @Transient
     // public List<Usage> usages = new ArrayList<>();

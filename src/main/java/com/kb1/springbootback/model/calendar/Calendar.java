@@ -3,7 +3,6 @@ import lombok.*;
 import java.io.Serializable;
 import javax.persistence.*;
 import java.util.*;
-import java.time.*;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
