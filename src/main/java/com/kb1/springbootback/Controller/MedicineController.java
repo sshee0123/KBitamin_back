@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.*;
@@ -31,13 +32,19 @@ public class MedicineController{
     // crud 
 
     // get one mediInfo
-    @GetMapping("/medicine/mediInfo/{name}")
-    @PreAuthorize("hasAnyRole('ROLE_USER, ROLE_ADMIN')")
-    public ResponseEntity<Medicine> getMedicineByName(
-        @PathVariable String name) {
-            System.out.println("\n\n\n\n\n\n\n one medi name is" + name);
+    @GetMapping("/medicine/detailOneMediInfo")
+    // @PreAuthorize("hasAnyRole('ROLE_USER, ROLE_ADMIN')")
+    public ResponseEntity<Medicine> getOneMedicineByName(@RequestParam(value = "name") String name){
+    // public ResponseEntity<Medicine> getOneMedicineByName(@PathVariable String name){
+            System.out.println("\n\n\n\n\n\n\n one medi name is" +name);
             return ResponseEntity.ok(medicineService.getMedicineByName(name));
         }
+
+        
+
+
+
+
     
 
 

@@ -18,8 +18,8 @@ public class MedicineService {
 
     // name으로 Medicine 정보 가져오기
     public Medicine getMedicineByName(String name) {
-        System.out.println("name으로 Medicine 정보 가져오기");
-        return medicineRepository.findAllByName(name);
+        // System.out.println("name으로 Medicine 정보 가져오기");
+        return medicineRepository.findOneByName(name);
 
     }
 
