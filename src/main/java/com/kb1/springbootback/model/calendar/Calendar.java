@@ -19,6 +19,9 @@ public class Calendar implements Serializable {
     @Column(name = "title")
     private String title;
 
+    @Column(name = "user_id")
+    private String userid;
+
     
     @Column(name = "sideEffect_name")
     private String sideEffect_name;
@@ -39,8 +42,9 @@ public class Calendar implements Serializable {
     @Column(name = "allDay")
     private String allDay;
 
-	public Calendar(String title, Date end,  Date start, String color) {
-		this.title = title;
+	public Calendar(String userid, String title, Date end,  Date start, String color) {
+		this.userid = userid;
+        this.title = title;
 		this.start = start;
 		this.end = end;
 		this.color = color;
