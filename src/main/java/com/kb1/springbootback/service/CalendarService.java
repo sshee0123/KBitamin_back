@@ -15,9 +15,9 @@ public class CalendarService{
     private CalendarRepository calendarRepository;
 
     // calendar LIST 다 가져오기
-    public List<Calendar> findAll(){
-        List<Calendar> list = calendarRepository.findAll();
+    public List<Calendar> getByUserid(String userid){
         System.out.println("Calendar LIST 다 가져오기");
+        List<Calendar> list = calendarRepository.getByUserid(userid);
         
         return list;
     }
