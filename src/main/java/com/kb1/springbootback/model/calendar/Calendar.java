@@ -38,10 +38,6 @@ public class Calendar implements Serializable {
     @Column(name = "color")
     private String color;
 
-    // allDay
-    @Column(name = "allDay")
-    private String allDay;
-
 	public Calendar(String userid, String title, Date end,  Date start, String color) {
 		this.userid = userid;
         this.title = title;
