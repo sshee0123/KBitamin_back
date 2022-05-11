@@ -23,8 +23,8 @@ public class CalendarService{
     }
 
     public Object getTakingPerUser(String userid){
-
-        Object list = calendarRepository.getTakingByUserid(userid);
+        System.out.println("Service : getTakingPerUser  ");
+        List<Object> list = calendarRepository.getTakingByUserid(userid);
         // Object[] arr = (Object[]) list;
         System.out.println("\n\n\n\n\n\n"+list);
         return list;
