@@ -11,9 +11,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface MedicineRepository extends JpaRepository<Medicine, Long> {
 
-	// @Query(value="SELECT * FROM medicine a INNER JOIN usage b ON a.name = b.name WHERE a.name=?1", nativeQuery=true)
-
-	// @Query(value="SELECT * FROM medicine a INNER JOIN usage b ON a.name = b.name WHERE a.name=:name", nativeQuery=true)
+	// @Query(value="SELECT * FROM medicine a INNER JOIN kb_db.usage b ON a.name = b.name WHERE a.name=?1", nativeQuery=true)
 	// public Medicine getOneByName(String name);
 
 	public Medicine findOneByName(String name);

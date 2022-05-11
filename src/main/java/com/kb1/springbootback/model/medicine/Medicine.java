@@ -54,18 +54,22 @@ public class Medicine implements Serializable {
     @Column(name = "divide_line")
     private String divideLine;
 
-    @OneToMany(mappedBy = "name", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
-    @Transient
-    public List<Usage> usages = new ArrayList<>();
-    // public List<Caution> cautions = new ArrayList<>();
+    // 용법
+    @Column(name = "usage")
+    private String usage;
+
+    // 주의사항
+    @Column(name = "caution")
+    private String caution;
 
 
-    @Builder
-	public Medicine(String name, String formulation, String manufacturer, String shape, String ingredient) {
-		this.name = name;
-		this.formulation = formulation;
-		this.manufacturer = manufacturer;
-        this.shape = shape;
-        this.ingredient = ingredient;
-	}
+
+    // @Builder
+	// public Medicine(String name, String formulation, String manufacturer, String shape, String ingredient) {
+	// 	this.name = name;
+	// 	this.formulation = formulation;
+	// 	this.manufacturer = manufacturer;
+    //     this.shape = shape;
+    //     this.ingredient = ingredient;
+	// }
 }
