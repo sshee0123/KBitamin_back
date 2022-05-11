@@ -22,4 +22,11 @@ public class CalendarService{
         return list;
     }
 
+    public Object getTakingPerUser(String userid){
+
+        Object list = calendarRepository.getTakingByUserid(userid);
+        // Object[] arr = (Object[]) list;
+        System.out.println("\n\n\n\n\n\n"+list);
+        return list;
+    }
 }
