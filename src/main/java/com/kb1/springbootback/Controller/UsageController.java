@@ -19,9 +19,9 @@ public class UsageController {
     private UsageService usageService;
 
     // get one medi caution
-    @GetMapping("/medicine/detailOneMediInfo")
+ /*   @GetMapping("/medicine/detailOneMediInfo")
     public ResponseEntity<Usage> getOneCautionByMediName(@RequestParam(value = "name") String name){
         System.out.println("\n\n\n\n\n\n\n Usage : medi name is" +name);
             return ResponseEntity.ok(usageService.getUsageByMediName(name));
-    }
+    }*/
 }

@@ -20,7 +20,6 @@ public class MedicineService {
     public Medicine getMedicineByName(String name) {
         // System.out.println("name으로 Medicine 정보 가져오기");
         return medicineRepository.findOneByName(name);
-
     }
 
     // name로 Medicine 있는지 확인

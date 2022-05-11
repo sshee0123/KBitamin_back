@@ -35,6 +35,7 @@ public class CalendarController{
     
     @GetMapping("/calendar/calendarInfo")
     public ResponseEntity<List<Calendar>> getByUserid(@RequestParam(value="id") String userid){
+        System.out.println("\n\n\ncalendarInfo\n\n\n");
         return ResponseEntity.ok(calendarService.getByUserid(userid));
     }
 
@@ -50,14 +51,19 @@ public class CalendarController{
 		calendar.setStart(calendarRequest.getStart());
 		calendar.setEnd(calendarRequest.getEnd());
 		calendar.setColor(calendarRequest.getColor());
-		calendar.setSideEffect_name("");
-		calendar.setAllDay("");
+		// calendar.setSideEffect_name("");
         System.out.println("\n\n\n\n\n /calendar/calendarInsert \n\n\n\n\n");
 
 		calendarRepository.save(calendar);
 
 		return ResponseEntity.ok(new MessageResponse("Calender registered successfully!"));
 	}
+
+    @GetMapping("/taking/takingUser")
+    public ResponseEntity<Object> getTakingPerUser(@RequestParam(value="id") String userid){
+        System.out.println("\n\ntakingUser\n\n\n");
+        return ResponseEntity.ok(calendarService.getTakingPerUser(userid));
+    }
 
     // crud 
 }

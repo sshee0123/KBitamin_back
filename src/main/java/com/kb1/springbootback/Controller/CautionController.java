@@ -18,12 +18,12 @@ public class CautionController {
     
     @Autowired
     private CautionService cautionService;
-
+/*
     // get one medi caution
     @GetMapping("/medicine/detailOneMediInfo")
     public ResponseEntity<Caution> getOneCautionByMediName(@RequestParam(value = "name") String name){
         System.out.println("\n\n\n\n\n\n\n Caution : medi name is" +name);
             return ResponseEntity.ok(cautionService.getCautionByMediName(name));
     }
-
+*/
 }
