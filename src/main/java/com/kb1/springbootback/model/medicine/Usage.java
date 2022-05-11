@@ -2,12 +2,17 @@ package com.kb1.springbootback.model.medicine;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 import lombok.*;
 
 @Getter
 @Setter
+@NoArgsConstructor
 @ToString
 @Entity
 @Table(name = "usage")
@@ -30,9 +35,10 @@ public class Usage implements Serializable {
     @JoinColumn(name = "name")
     private Medicine name;
 
+    @Builder
     public Usage(Medicine name, String usageIndex, String usageContent){
         this.name = name;
-        this.usageIndex = usageContent;
+        this.usageIndex = usageIndex;
         this.usageContent = usageContent;
     }
 }

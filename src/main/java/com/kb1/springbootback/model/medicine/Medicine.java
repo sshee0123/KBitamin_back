@@ -8,12 +8,12 @@ import org.hibernate.annotations.DynamicUpdate;
 
 @Getter
 @Setter
+@NoArgsConstructor
 @ToString
 @Entity
 @Table(name="medicine")
 @DynamicInsert
 @DynamicUpdate
-@NoArgsConstructor
 public class Medicine implements Serializable {
 
     // 약 이름
@@ -54,14 +54,18 @@ public class Medicine implements Serializable {
     @Column(name = "divide_line")
     private String divideLine;
 
-    // @OneToMany(mappedBy = "name", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
-    // @Transient
-    // public List<Usage> usages = new ArrayList<>();
+    @OneToMany(mappedBy = "name", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    @Transient
+    public List<Usage> usages = new ArrayList<>();
     // public List<Caution> cautions = new ArrayList<>();
 
-	public Medicine(String name, String formulation, String manufacturer) {
+
+    @Builder
+	public Medicine(String name, String formulation, String manufacturer, String shape, String ingredient) {
 		this.name = name;
 		this.formulation = formulation;
 		this.manufacturer = manufacturer;
+        this.shape = shape;
+        this.ingredient = ingredient;
 	}
 }

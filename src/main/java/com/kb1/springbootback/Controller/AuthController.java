@@ -111,7 +111,6 @@ public class AuthController {
 		user.setPassword(encoder.encode(signUpRequest.getPassword()));
 		user.setEmail(signUpRequest.getEmail());
 		user.setBirthDate(signUpRequest.getBirthDate());
-		// user.setPhone(signUpRequest.getPhone());
 		user.setSex(ESex.valueOf(signUpRequest.getSex()));
 		user.setJoinDate(LocalDateTime.now());
 

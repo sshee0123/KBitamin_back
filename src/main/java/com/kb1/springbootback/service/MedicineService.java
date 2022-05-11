@@ -3,6 +3,7 @@ package com.kb1.springbootback.service;
 import java.util.List;
 
 import com.kb1.springbootback.model.medicine.Medicine;
+import com.kb1.springbootback.model.medicine.Usage;
 import com.kb1.springbootback.model.user.User;
 import com.kb1.springbootback.payload.response.MessageResponse;import com.kb1.springbootback.repository.medicine.MedicineRepository;
 
@@ -16,10 +17,16 @@ public class MedicineService {
     @Autowired
     private MedicineRepository medicineRepository;
 
+    // @Autowired
+    // private CautionService cautionService;
+
     // name으로 Medicine 정보 가져오기
     public Medicine getMedicineByName(String name) {
-        // System.out.println("name으로 Medicine 정보 가져오기");
+        System.out.println("name으로 Medicine 정보 가져오기  SERVICE~~~ NAME IS"+name);
+
         return medicineRepository.findOneByName(name);
+
+        // return medicineRepository.getOneByName(name);
 
     }
 

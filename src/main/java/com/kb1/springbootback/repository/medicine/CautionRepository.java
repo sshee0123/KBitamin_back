@@ -9,11 +9,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CautionRepository extends JpaRepository<Caution, Long>  {
-    Caution findOneByName(String name);
-
-	Boolean existsByName(String name);
-
-	Caution findAllByName(String name);
-
-    List<Caution> findAll();
+	public List<Caution> findAllByName(String name);
+    
 }
