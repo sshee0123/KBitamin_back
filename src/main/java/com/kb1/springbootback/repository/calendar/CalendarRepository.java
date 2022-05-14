@@ -21,11 +21,4 @@ public interface CalendarRepository extends JpaRepository<Calendar, Long> {
 
     @Query(value="SELECT * FROM taking WHERE user_id =?1 and title =?2", nativeQuery=true)
     public Calendar getOneTakingByUserid(final String userid, final String title, final Date start);
-
-
-
-    // @Transactional
-    // @Modifying(clearAutomatically = true, flushAutomatically = true)
-    // @Query(value="DELETE FROM taking WHERE user_id =?1 and title =?2 and start =?3", nativeQuery=true)
-    // public void deleteTaking(final String userid, final String title, final Date start);
 }
