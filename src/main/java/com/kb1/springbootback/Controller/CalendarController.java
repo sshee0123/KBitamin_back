@@ -63,9 +63,18 @@ public class CalendarController{
     }
 
     // crud 
+    // 복용 약 수정
+    @PostMapping("/taking/updateTaking")
+	public ResponseEntity<?> updateTaking(@RequestParam(value="id")  String userid, @Validated @RequestBody CalendarRequest calendarRequest) {
+
+        System.out.println(calendarRequest.toString());
+        System.out.println("\n\n\n "+"userid: "+ userid+" " +calendarRequest.getTitle()+" " +calendarRequest.getStart()+" " +calendarRequest.getSideEffectName()+" \n\n\n");
+        calendarService.updateTaking(userid, calendarRequest.getTitle(), calendarRequest.getStart(), calendarRequest.getSideEffectName());
+
+		return ResponseEntity.ok(new MessageResponse("taking updated successfully!"));
+	}
 
     // 복용 약 삭제
-    
     @PostMapping("/taking/deleteTaking")
 	public ResponseEntity<?> deleteTaking(@RequestParam(value="id")  String userid, @Validated @RequestBody CalendarRequest calendarRequest) {
 
