@@ -28,6 +28,16 @@ public class CalendarService{
         return list;
     }
 
+    public void updateTaking(String id, String title, Date start, String sideEffectName) {
+
+        System.out.println("\n\n\n\n\nupdateTaking "+id+title+start+sideEffectName);
+        Calendar updateTaking = calendarRepository.getOneTakingByUserid(id, title, start);
+        updateTaking.setSideEffect_name(sideEffectName);
+        calendarRepository.save(updateTaking);
+        System.out.println("Service : updateTaking  "+updateTaking);
+        // calendarRepository.delete(delTaking);
+    }
+
     public void deleteTaking(String id, String title, Date start) {
 
         System.out.println("\n\n\n\n\n"+id+title+start);

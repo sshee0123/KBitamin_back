@@ -72,9 +72,10 @@ public class DashboardController{
                     }
                 }
 
+                System.out.println("부작용 비교!~");
                 // 내 약과 기존 약들의 부작용 비교
                 if(!m.getName().equals(c.getTitle())){ // 서로 다른 이름의 약만 고려
-                    if(m.getCaution()!=null && m.getCaution().contains(c.getSideEffect_name())){ // 내 약의 유효성분이 기존 약 유효성분에 포함되어 있는지
+                    if(c.getSideEffect_name()!=null && m.getCaution()!=null && m.getCaution().contains(c.getSideEffect_name())){ // 내 약의 유효성분이 기존 약 유효성분에 포함되어 있는지
                         System.out.println(m.getName()+" // 내 약 "+c.getTitle()+"부작용 : "+ c.getSideEffect_name());
                         cnt+=1;
                     }

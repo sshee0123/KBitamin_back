@@ -13,7 +13,7 @@ public class CalendarRequest {
 
     private String title;
 
-    private String sideEffect_name;
+    private String SideEffectName;
 
     private Date start;
 
