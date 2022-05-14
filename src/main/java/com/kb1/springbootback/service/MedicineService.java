@@ -1,9 +1,11 @@
 package com.kb1.springbootback.service;
 
+import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 import com.kb1.springbootback.model.medicine.Medicine;
-import com.kb1.springbootback.model.medicine.Usage;
+
 import com.kb1.springbootback.model.user.User;
 import com.kb1.springbootback.payload.response.MessageResponse;import com.kb1.springbootback.repository.medicine.MedicineRepository;
 
@@ -17,16 +19,11 @@ public class MedicineService {
     @Autowired
     private MedicineRepository medicineRepository;
 
-    // @Autowired
-    // private CautionService cautionService;
-
     // name으로 Medicine 정보 가져오기
     public Medicine getMedicineByName(String name) {
         System.out.println("name으로 Medicine 정보 가져오기  SERVICE~~~ NAME IS"+name);
 
         return medicineRepository.findOneByName(name);
-
-        // return medicineRepository.getOneByName(name);
 
     }
 
@@ -43,11 +40,22 @@ public class MedicineService {
         return list;
     }
 
-    // 하나씩 다 가져오기
-    // public Medicine getMedicine(String name){
-    //     Medicine medicine = medicineRepository.findBy(name).orElseThrow(() -> new ResourceNotFoundException("Not exist Medicine Data by name : ["+name+"]"));
-        
-    //     return medicineRepository.save(medicine);
+    // 선택된 리뷰필터링 가져오기, btnId(value), btnName(type)
+    // public List<?> getMedicineByHashbtn(String btnId, String btnName) {
+
+    //     switch(btnName){
+    //         // 모양
+    //         case "shape":
+    //         // 색상
+    //         case "color":
+    //         // 제형
+    //         case "formulation":
+    //         // 분할선 
+    //         case "divide_line":
+    //     }
+
+    //     return result;
+
     // }
 
 }

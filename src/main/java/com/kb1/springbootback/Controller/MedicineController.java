@@ -2,7 +2,6 @@ package com.kb1.springbootback.controller;
 
 import com.kb1.springbootback.model.medicine.Medicine;
 import com.kb1.springbootback.service.MedicineService;
-import com.kb1.springbootback.service.UsageService;
 
 import org.jboss.jandex.TypeTarget.Usage;
 import org.springframework.beans.factory.annotation.*;
@@ -24,9 +23,6 @@ public class MedicineController{
 
     @Autowired
     private MedicineService medicineService;
-
-    @Autowired
-    private UsageService usageService;
   
     // paging
     @GetMapping("/mediInfo")
@@ -39,8 +35,6 @@ public class MedicineController{
     @GetMapping("/detailOneMediInfo")
     public ResponseEntity<Medicine> getOneMedicineByName(@RequestParam("name") String name){
             System.out.println("\n\n\n\n\n\n\n one medi name is" +name);
-            // List<com.kb1.springbootback.model.medicine.Usage> usages = usageService.getAllUsageByName(name);
-            // System.out.println("\n\n\n\n\n\n\n Usage List" +usages);
             
             return ResponseEntity.ok(medicineService.getMedicineByName(name));
         }
