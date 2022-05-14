@@ -1,24 +1,14 @@
 package com.kb1.springbootback.controller;
 
-import com.kb1.springbootback.exception.ResourceNotFoundException;
 import com.kb1.springbootback.model.calendar.Calendar;
 import com.kb1.springbootback.model.medicine.Medicine;
-import com.kb1.springbootback.model.user.User;
-import com.kb1.springbootback.payload.request.CalendarRequest;
-import com.kb1.springbootback.payload.response.MessageResponse;
 import com.kb1.springbootback.repository.calendar.CalendarRepository;
 import com.kb1.springbootback.repository.dashboard.DashboardRepository;
-import com.kb1.springbootback.service.CalendarService;
-import com.kb1.springbootback.service.UserService;
 
 import org.springframework.beans.factory.annotation.*;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
