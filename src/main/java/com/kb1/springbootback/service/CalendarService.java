@@ -14,9 +14,9 @@ public class CalendarService{
     @Autowired
     private CalendarRepository calendarRepository;
 
-    // calendar LIST ë‹¤ ê°€ì ¸ì˜¤ê¸°
+    // calendar LIST ´Ù °¡Á®¿À±â
     public List<Calendar> getByUserid(String userid){
-        System.out.println("Calendar LIST ë‹¤ ê°€ì ¸ì˜¤ê¸°");
+        System.out.println("Calendar LIST ´Ù °¡Á®¿À±â");
         List<Calendar> list = calendarRepository.getByUserid(userid);
         
         return list;

@@ -1,6 +1,7 @@
 package com.kb1.springbootback.repository.calendar;
 
 import com.kb1.springbootback.model.calendar.*;
+import com.kb1.springbootback.model.medicine.Medicine;
 
 import org.apache.ibatis.annotations.Param;
 import org.springframework.data.jpa.repository.JpaRepository;
