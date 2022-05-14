@@ -1,9 +1,7 @@
 package com.kb1.springbootback.payload.request;
 
 import lombok.*;
-import javax.validation.constraints.*;
 import java.util.Date;
-import java.util.Set;
 
 @Getter
 @Setter
