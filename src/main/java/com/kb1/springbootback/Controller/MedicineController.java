@@ -31,7 +31,7 @@ public class MedicineController{
     @GetMapping("/detailOneMediInfo")
     public ResponseEntity<Medicine> getOneMedicineByName(@RequestParam(value="name", required=false) String name){
             System.out.println("\n\n\n\n\n\n\n one medi name is" +name);
-            Medicine medicine = medicineService.getMedicineByName(name);
-            return ResponseEntity.ok(medicine);
+            
+            return ResponseEntity.ok(medicineService.getMedicineByName(name));
         }
 }
