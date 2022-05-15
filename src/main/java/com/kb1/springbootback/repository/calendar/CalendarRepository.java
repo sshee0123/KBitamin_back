@@ -21,4 +21,9 @@ public interface CalendarRepository extends JpaRepository<Calendar, Long> {
 
     @Query(value="SELECT * FROM taking WHERE user_id =?1 and title =?2", nativeQuery=true)
     public Calendar getOneTakingByUserid(final String userid, final String title, final Date start);
+
+    @Modifying
+    @Transactional
+    @Query(value="UPDATE taking SET sideEffect_name=?4 WHERE user_id =?1 and title =?2 and start=?3", nativeQuery=true)
+    public void updateTakingByUserid(final String userid, final String title, final Date start, final String sideEffectName);
 }
