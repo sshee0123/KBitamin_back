@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -35,7 +37,6 @@ public class CalendarController{
         System.out.println("\n\n\ncalendarInfo\n\n\n");
         return ResponseEntity.ok(calendarService.getByUserid(userid));
     }
-
     
     @PostMapping("/calendar/calendarInsert")
 	public ResponseEntity<?> registerCalendar(@RequestParam(value="id")  String userid, @Validated @RequestBody CalendarRequest calendarRequest) {
@@ -45,8 +46,12 @@ public class CalendarController{
         Calendar calendar = new Calendar();
 		calendar.setUserid(userid);
 		calendar.setTitle(calendarRequest.getTitle());
-		calendar.setStart(calendarRequest.getStart());
-		calendar.setEnd(calendarRequest.getEnd());
+        Date date = calendarRequest.getStart();
+        date.setDate(date.getDate()+1);
+		calendar.setStart(date);
+        Date endDate = calendarRequest.getEnd();
+        endDate.setDate(endDate.getDate()+1);
+		calendar.setEnd(endDate);
 		calendar.setColor(calendarRequest.getColor());
 		// calendar.setSideEffect_name("");
         System.out.println("\n\n\n\n\n /calendar/calendarInsert \n\n\n\n\n");
