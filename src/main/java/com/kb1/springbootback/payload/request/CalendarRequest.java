@@ -1,9 +1,7 @@
 package com.kb1.springbootback.payload.request;
 
 import lombok.*;
-import javax.validation.constraints.*;
 import java.util.Date;
-import java.util.Set;
 
 @Getter
 @Setter
@@ -15,7 +13,7 @@ public class CalendarRequest {
 
     private String title;
 
-    private String sideEffect_name;
+    private String SideEffectName;
 
     private Date start;
 

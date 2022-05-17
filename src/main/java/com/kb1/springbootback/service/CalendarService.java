@@ -1,5 +1,6 @@
 package com.kb1.springbootback.service;
 
+import java.util.Date;
 import java.util.List;
 
 import com.kb1.springbootback.model.calendar.*;
@@ -23,10 +24,28 @@ public class CalendarService{
     }
 
     public Object getTakingPerUser(String userid){
-        System.out.println("Service : getTakingPerUser  ");
         List<Object> list = calendarRepository.getTakingByUserid(userid);
-        // Object[] arr = (Object[]) list;
-        System.out.println("\n\n\n\n\n\n"+list);
         return list;
+    }
+
+    public void updateTaking(String id, String title, Date start, String sideEffectName) {
+
+        /*System.out.println("\n\n\n\n\nupdateTaking "+id+title+start+sideEffectName);
+        Calendar updateTaking = calendarRepository.getOneTakingByUserid(id, title, start);
+        updateTaking.setSideEffect_name(sideEffectName);
+        calendarRepository.save(updateTaking);
+        System.out.println("Service : updateTaking  "+updateTaking);
+        */
+        System.out.println("\n\n\n\n\nupdateTaking "+id+title+start+sideEffectName);
+        calendarRepository.updateTakingByUserid(id, title, start,sideEffectName);
+        
+    }
+
+    public void deleteTaking(String id, String title, Date start) {
+
+        System.out.println("\n\n\n\n\n"+id+title+start);
+        Calendar delTaking = calendarRepository.getOneTakingByUserid(id, title, start);
+        System.out.println("Service : deleteTaking  "+delTaking);
+        calendarRepository.delete(delTaking);
     }
 }

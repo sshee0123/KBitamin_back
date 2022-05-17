@@ -2,12 +2,10 @@ package com.kb1.springbootback.controller;
 
 import com.kb1.springbootback.exception.ResourceNotFoundException;
 import com.kb1.springbootback.model.user.User;
-import com.kb1.springbootback.payload.response.MessageResponse;
 import com.kb1.springbootback.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 

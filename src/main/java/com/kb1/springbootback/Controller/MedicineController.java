@@ -3,8 +3,6 @@ package com.kb1.springbootback.controller;
 import com.kb1.springbootback.model.medicine.Medicine;
 import com.kb1.springbootback.repository.medicine.MedicineRepository;
 import com.kb1.springbootback.service.MedicineService;
-
-import org.jboss.jandex.TypeTarget.Usage;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;

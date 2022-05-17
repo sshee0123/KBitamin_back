@@ -1,24 +1,14 @@
 package com.kb1.springbootback.controller;
 
-import com.kb1.springbootback.exception.ResourceNotFoundException;
 import com.kb1.springbootback.model.calendar.Calendar;
 import com.kb1.springbootback.model.medicine.Medicine;
-import com.kb1.springbootback.model.user.User;
-import com.kb1.springbootback.payload.request.CalendarRequest;
-import com.kb1.springbootback.payload.response.MessageResponse;
 import com.kb1.springbootback.repository.calendar.CalendarRepository;
 import com.kb1.springbootback.repository.dashboard.DashboardRepository;
-import com.kb1.springbootback.service.CalendarService;
-import com.kb1.springbootback.service.UserService;
 
 import org.springframework.beans.factory.annotation.*;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -82,9 +72,10 @@ public class DashboardController{
                     }
                 }
 
+                System.out.println("부작용 비교!~");
                 // 내 약과 기존 약들의 부작용 비교
                 if(!m.getName().equals(c.getTitle())){ // 서로 다른 이름의 약만 고려
-                    if(m.getCaution()!=null && m.getCaution().contains(c.getSideEffect_name())){ // 내 약의 유효성분이 기존 약 유효성분에 포함되어 있는지
+                    if(c.getSideEffect_name()!=null && m.getCaution()!=null && m.getCaution().contains(c.getSideEffect_name())){ // 내 약의 유효성분이 기존 약 유효성분에 포함되어 있는지
                         System.out.println(m.getName()+" // 내 약 "+c.getTitle()+"부작용 : "+ c.getSideEffect_name());
                         cnt+=1;
                     }
