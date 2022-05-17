@@ -15,9 +15,9 @@ public class CalendarService{
     @Autowired
     private CalendarRepository calendarRepository;
 
-    // calendar LIST ´Ù °¡Á®¿À±â
+    // calendar LIST 
     public List<Calendar> getByUserid(String userid){
-        System.out.println("Calendar LIST ´Ù °¡Á®¿À±â");
+        System.out.println("Calendar LIST ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
         List<Calendar> list = calendarRepository.getByUserid(userid);
         
         return list;
@@ -30,12 +30,6 @@ public class CalendarService{
 
     public void updateTaking(String id, String title, Date start, String sideEffectName) {
 
-        /*System.out.println("\n\n\n\n\nupdateTaking "+id+title+start+sideEffectName);
-        Calendar updateTaking = calendarRepository.getOneTakingByUserid(id, title, start);
-        updateTaking.setSideEffect_name(sideEffectName);
-        calendarRepository.save(updateTaking);
-        System.out.println("Service : updateTaking  "+updateTaking);
-        */
         System.out.println("\n\n\n\n\nupdateTaking "+id+title+start+sideEffectName);
         calendarRepository.updateTakingByUserid(id, title, start,sideEffectName);
         

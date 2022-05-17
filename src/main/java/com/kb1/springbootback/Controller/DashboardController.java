@@ -4,10 +4,12 @@ import com.kb1.springbootback.model.calendar.Calendar;
 import com.kb1.springbootback.model.medicine.Medicine;
 import com.kb1.springbootback.repository.calendar.CalendarRepository;
 import com.kb1.springbootback.repository.dashboard.DashboardRepository;
+import com.kb1.springbootback.service.CalendarService;
 
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -26,6 +28,9 @@ public class DashboardController{
 
     @Autowired
     private CalendarRepository calendarRepository;
+
+    @Autowired
+    private CalendarService calendarService;
 
     @PostMapping("/dashboard/recommendMedi")
 	public ResponseEntity<?> recommendMedi(@RequestParam(value="id")  String userid) {
@@ -108,4 +113,17 @@ public class DashboardController{
         
 		return ResponseEntity.ok(avoidList);
 	}
+
+    // @GetMapping("/dashboard/sideEffectMedi")
+    // public ResponseEntity<Object> getSideEffectMediPerUser(@RequestParam(value="id") String userid){
+    //     System.out.println("\n\ntakingUser\n\n\n");
+    //     return ResponseEntity.ok(calendarService.getTakingPerUser(userid));
+    // }
+
+    @GetMapping("/dashboard/sideEffectMedi")
+    public ResponseEntity<Object> getSideEffectMediPerUser(@RequestParam(value="id") String userid){
+        System.out.println("\n\ntakingUser\n\n\n");
+        return ResponseEntity.ok(calendarService.getByUserid(userid));
+    }
+
 }
