@@ -3,6 +3,7 @@ package com.kb1.springbootback.repository.medicine;
 import com.kb1.springbootback.model.medicine.Medicine;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 import org.springframework.stereotype.Repository;
