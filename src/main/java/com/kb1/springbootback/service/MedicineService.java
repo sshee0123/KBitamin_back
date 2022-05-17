@@ -37,22 +37,16 @@ public class MedicineService {
         return list;
     }
 
-    // 선택된 리뷰필터링 가져오기, btnId(value), btnName(type)
-    // public List<?> getMedicineByHashbtn(String btnId, String btnName) {
+    // 선택된 리뷰필터링 가져오기 
+    public List<?> getMedicineByButtonFilter(String shapeId, String colorId, String formulationId, String dividelineId) {
 
-    //     switch(btnName){
-    //         // 모양
-    //         case "shape":
-    //         // 색상
-    //         case "color":
-    //         // 제형
-    //         case "formulation":
-    //         // 분할선 
-    //         case "divide_line":
-    //     }
+        List<Medicine> list = medicineRepository.findFromTo(shapeId, colorId, formulationId, dividelineId);
+        System.out.println("선택된 리뷰필터링 가져오기   SERVICE~~~ "+shapeId+colorId+formulationId+dividelineId);
 
-    //     return result;
+        System.out.println("service~~~~~~~~~~~~~list~~~~~~~~~ "+list);
+        return list;
+        
 
-    // }
+    }
 
 }
