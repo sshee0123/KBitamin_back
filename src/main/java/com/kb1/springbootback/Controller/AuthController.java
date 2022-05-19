@@ -75,35 +75,22 @@ public class AuthController {
 	public ResponseEntity<?> registerUser(@Validated @RequestBody SignupRequest signUpRequest) {
 		
 		if (userRepository.existsById(signUpRequest.getId())) {
-			System.out.println("existsById");
 			return ResponseEntity
 					.badRequest()
 					.body(new MessageResponse("Error: Id is already in use!"));
 		}
 
 		if (userRepository.existsByEmail(signUpRequest.getEmail())) {
-			System.out.println("existsByEmail");
 			return ResponseEntity
 					.badRequest()
 					.body(new MessageResponse("Error: Email is already in use!"));
 		}
 
 		if (!signUpRequest.getSex().equals(ESex.N.toString()) && !signUpRequest.getSex().equals(ESex.F.toString()) && !signUpRequest.getSex().equals(ESex.M.toString()) ) {
-			System.out.println("getSex Error");
 			return ResponseEntity
 					.badRequest()
 					.body(new MessageResponse("Error: Please select your gender!"));
 		}
-
-		// Create new user's account
-		//
-//      User user = new User.Builder(signUpRequest.getUsername(),
-//                     encoder.encode(signUpRequest.getPassword()),
-//                     signUpRequest.getEmail())
-//                     //.phoneNo(signUpRequest.getPhone())
-//                     //.sex(signUpRequest.getSex())
-//                     //.birthDate(signUpRequest.getBirthDate())
-//                     .build();
 		User user = new User();
 		user.setId(signUpRequest.getId());
 		user.setUsername(signUpRequest.getUsername());
@@ -112,39 +99,6 @@ public class AuthController {
 		user.setBirthDate(signUpRequest.getBirthDate());
 		user.setSex(ESex.valueOf(signUpRequest.getSex()));
 		user.setJoinDate(LocalDateTime.now());
-
-	/*	Set<String> strRoles = signUpRequest.getRoles();
-		Set<Role> roles = new HashSet<>();
-
-		 if (strRoles == null) {
-		 	Role userRole = roleRepository.findByName(ERole.ROLE_USER)
-		 			.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-		 	roles.add(userRole);
-		 } else {
-		 	strRoles.forEach(role -> {
-		 		switch (role) {
-		 			case "admin":
-		 				Role adminRole = roleRepository.findByName(ERole.ROLE_ADMIN)
-		 						.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-		 				roles.add(adminRole);
-
-		 				break;
-		 			case "mod":
-		 				Role modRole = roleRepository.findByName(ERole.ROLE_MODERATOR)
-		 						.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-		 				roles.add(modRole);
-
-		 				break;
-		 			default:
-		 				Role userRole = roleRepository.findByName(ERole.ROLE_USER)
-		 						.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-						roles.add(userRole);
-		 		}
-		});
-		}
-
-		user.setRoles(roles);
-		*/
 		userRepository.save(user);
 
 		return ResponseEntity.ok(new MessageResponse("User registered successfully!"));

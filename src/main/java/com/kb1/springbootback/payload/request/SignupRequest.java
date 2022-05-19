@@ -10,11 +10,9 @@ import java.util.Set;
 public class SignupRequest {
 
     // 회원가입 할 때 필요한 정보들
-    // 유저 아이디
     @NotBlank
     @Size(min = 5, max = 20)
     private String id;
-
     
     @NotBlank
     @Size(min = 3, max = 20)
@@ -30,10 +28,6 @@ public class SignupRequest {
     @NotBlank
     @Size(min = 6, max = 40)
     private String password;
-
-
-    // 핸드폰 번호
-    // private String phone;
 
     // 성별
     private String sex;

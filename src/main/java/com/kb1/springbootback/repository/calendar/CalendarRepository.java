@@ -14,7 +14,6 @@ import org.springframework.stereotype.Repository;
 public interface CalendarRepository extends JpaRepository<Calendar, Long> {
     
     public List<Calendar> getByUserid(String userid);
-    // Optional<Calendar> findByUserid(String userid);
 
     @Query(value="SELECT t.title, t.start, t.end, t.sideEffect_name from taking t left join side_effect s on (s.name=t.title) where t.user_id=?1", nativeQuery=true)
     public List<Object> getTakingByUserid(final String userid);

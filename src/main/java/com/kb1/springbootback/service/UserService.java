@@ -25,15 +25,13 @@ public class UserService {
     public Boolean existsByEmail(String email) {
         return userRepository.existsByEmail(email);
     }
+    
     // user update
     public User updateUserInfo(String updatedId, User updatedUser) {
         User user = userRepository.findAllById(updatedId);
-
-        // id 제외하고 update
         user.setUsername(updatedUser.getUsername());
         user.setEmail(updatedUser.getEmail());
         user.setPassword(encoder.encode(updatedUser.getPassword()));
-        // user.setPhone(updatedUser.getPhone()); // 삭제
         user.setSex(updatedUser.getSex());
         user.setBirthDate(updatedUser.getBirthDate());
 

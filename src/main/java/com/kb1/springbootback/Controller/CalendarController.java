@@ -32,16 +32,17 @@ public class CalendarController{
     @Autowired
 	CalendarRepository calendarRepository;
     
+    // userid로 복용 약 캘린더 정보 가져오기
     @GetMapping("/calendar/calendarInfo")
-    public ResponseEntity<List<Calendar>> getByUserid(@RequestParam(value="id") String userid){
-        System.out.println("\n\n\ncalendarInfo\n\n\n");
+    public ResponseEntity<List<Calendar>> getByUserid(
+        @RequestParam(value="id") String userid){
         return ResponseEntity.ok(calendarService.getByUserid(userid));
     }
     
+    // 사용자 캘린더에 약 정보 추가
     @PostMapping("/calendar/calendarInsert")
-	public ResponseEntity<?> registerCalendar(@RequestParam(value="id")  String userid, @Validated @RequestBody CalendarRequest calendarRequest) {
-
-        System.out.println("\n\n\n "+"userid: "+ userid+" " +calendarRequest.getTitle()+" \n\n\n");
+	public ResponseEntity<?> registerCalendar(
+        @RequestParam(value="id")  String userid, @Validated @RequestBody CalendarRequest calendarRequest) {
 
         Calendar calendar = new Calendar();
 		calendar.setUserid(userid);
@@ -53,27 +54,22 @@ public class CalendarController{
         endDate.setDate(endDate.getDate()+1);
 		calendar.setEnd(endDate);
 		calendar.setColor(calendarRequest.getColor());
-		// calendar.setSideEffect_name("");
-        System.out.println("\n\n\n\n\n /calendar/calendarInsert \n\n\n\n\n");
-
 		calendarRepository.save(calendar);
 
 		return ResponseEntity.ok(new MessageResponse("Calender registered successfully!"));
 	}
 
+    // 사용자 복용 약 가져오기
     @GetMapping("/taking/takingUser")
     public ResponseEntity<Object> getTakingPerUser(@RequestParam(value="id") String userid){
-        System.out.println("\n\ntakingUser\n\n\n");
+        
         return ResponseEntity.ok(calendarService.getTakingPerUser(userid));
     }
 
-    // crud 
-    // 복용 약 수정
+    // 복용 약 update
     @PostMapping("/taking/updateTaking")
 	public ResponseEntity<?> updateTaking(@RequestParam(value="id")  String userid, @Validated @RequestBody CalendarRequest calendarRequest) {
 
-        System.out.println(calendarRequest.toString());
-        System.out.println("\n\n\n "+"userid: "+ userid+" " +calendarRequest.getTitle()+" " +calendarRequest.getStart()+" " +calendarRequest.getSideEffectName()+" \n\n\n");
         calendarService.updateTaking(userid, calendarRequest.getTitle(), calendarRequest.getStart(), calendarRequest.getSideEffectName());
 
 		return ResponseEntity.ok(new MessageResponse("taking updated successfully!"));
@@ -83,7 +79,6 @@ public class CalendarController{
     @PostMapping("/taking/deleteTaking")
 	public ResponseEntity<?> deleteTaking(@RequestParam(value="id")  String userid, @Validated @RequestBody CalendarRequest calendarRequest) {
 
-        System.out.println("\n\n\n "+"userid: "+ userid+" " +calendarRequest.getTitle()+" " +calendarRequest.getStart()+" \n\n\n");
         calendarService.deleteTaking(userid, calendarRequest.getTitle(), calendarRequest.getStart());
 
 		return ResponseEntity.ok(new MessageResponse("taking deleted successfully!"));

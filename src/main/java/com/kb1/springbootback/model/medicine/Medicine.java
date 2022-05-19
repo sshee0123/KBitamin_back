@@ -60,15 +60,4 @@ public class Medicine implements Serializable {
     // 주의사항
     @Column(name = "caution")
     private String caution;
-
-
-
-    // @Builder
-	// public Medicine(String name, String formulation, String manufacturer, String shape, String ingredient) {
-	// 	this.name = name;
-	// 	this.formulation = formulation;
-	// 	this.manufacturer = manufacturer;
-    //     this.shape = shape;
-    //     this.ingredient = ingredient;
-	// }
 }

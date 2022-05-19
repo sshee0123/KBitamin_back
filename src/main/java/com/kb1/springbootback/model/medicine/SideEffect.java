@@ -25,15 +25,6 @@ public class SideEffect implements Serializable {
     @Column(name = "classify")
     private String classify;
 
-    // // 외래키
-    // @JoinColumn(name = "user_id_fk")
-    // private Calendar user_id;
-
-	// public SideEffect(String name, String content, Calendar user_id) {
-	// 	this.name = name;
-	// 	this.content = content;
-	// 	this.user_id = user_id;
-	// }
     public SideEffect(String name, String classify) {
 		this.name = name;
 		this.classify = classify;

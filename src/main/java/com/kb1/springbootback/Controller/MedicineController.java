@@ -25,35 +25,25 @@ public class MedicineController{
 
     @Autowired
     private MedicineService medicineService;
-
-    @Autowired
-    private MedicineRepository medicineRepository;
   
-    // paging
+    // 약 정보 모두 가져오기
     @GetMapping("/mediInfo")
     public ResponseEntity<List<Medicine>> getAllMedicines(){
-        System.out.println("\n\n\n\n mapping mediINfo?????? ");
         return ResponseEntity.ok(medicineService.findAll());
     }
 
-    // get one mediInfo
+    // 약 이름으로 해당 약 정보 하나 가져오기
     @GetMapping("/detailOneMediInfo")
     public ResponseEntity<Medicine> getOneMedicineByName(@RequestParam(value="name", required=false) String name){
-            System.out.println("\n\n\n\n\n\n\n one medi name is" +name);
-            
-            return ResponseEntity.ok(medicineService.getMedicineByName(name));
+        return ResponseEntity.ok(medicineService.getMedicineByName(name));
     }
 
+    // 외형 정보로 버튼 필터링 약 정보 검색
     @GetMapping("/buttonFilter")
     public ResponseEntity<?> getMedicineByButtonFilter(@RequestParam(value="shapeId", required=false) String shapeId,
     @RequestParam(value="colorId", required=false) String colorId,
     @RequestParam(value="formulationId", required=false) String formulationId,
     @RequestParam(value="dividelineId", required=false) String dividelineId){
-
-        System.out.println("\n\n\n\n mapping buttonFilter mediINfo?????? ");
         return ResponseEntity.ok(medicineService.getMedicineByButtonFilter(shapeId, colorId, formulationId, dividelineId));
     }
-
-
-
 }

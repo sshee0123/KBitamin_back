@@ -32,13 +32,12 @@ public class DashboardController{
     @Autowired
     private CalendarService calendarService;
 
+    // 유효성분, 부작용 분석으로 피해야 할 약 추천 recommendMedi
     @PostMapping("/dashboard/recommendMedi")
 	public ResponseEntity<?> recommendMedi(@RequestParam(value="id")  String userid) {
-        System.out.println("\n\n\n "+"아이디: "+ userid+" " +"recommendMedi"+" \n\n\n");
 
         List<Medicine> mediList = dashboardRepository.getRecommendMedi();
         List<Calendar> calendarListtmp = calendarRepository.getByUserid(userid);
-
         // 모든 약 0으로 초기화
         HashMap<String, Integer> hm = new HashMap<>();
         // 약과 유효성분 set
@@ -47,7 +46,6 @@ public class DashboardController{
         HashMap<String, ArrayList<String>> myIngredientMap = new HashMap<>();
         // 최종 피해야 할 약 리스트
         HashMap<String, Integer> avoidList = new HashMap<>();
-
         for(Medicine m :mediList){
             hm.put(m.getName(), 0); // 약 이름, score
             ingredientMap.put(m.getName(), m.getIngredient()); // 약 이름, 유효성분
@@ -62,7 +60,7 @@ public class DashboardController{
             }
             myIngredientMap.put(c.getTitle(), myIngredientArray);
         }
-        }
+    }
         for(Medicine m :mediList){ // 기존 약 
             int cnt = 0;
             for(Calendar c: calendarListtmp){ // 내 약
@@ -71,58 +69,38 @@ public class DashboardController{
                 if(!m.getName().equals(c.getTitle()) && myIngredientMap.get(c.getTitle())!=null){ // 서로 다른 이름의 약만 고려
                     for(String s : myIngredientMap.get(c.getTitle())){
                        if(m.getIngredient()!=null && m.getIngredient().contains(s)){ // 내 약의 유효성분이 기존 약 유효성분에 포함되어 있는지
-                        System.out.println(m.getName()+"의 "+m.getIngredient()+" / 내 약 "+c.getTitle()+"의 유효성분 : "+ s);
                             cnt+=2;
                         }
                     }
                 }
-
-                System.out.println("부작용 비교!~");
                 // 내 약과 기존 약들의 부작용 비교
                 if(!m.getName().equals(c.getTitle())){ // 서로 다른 이름의 약만 고려
                     if(c.getSideEffect_name()!=null && m.getCaution()!=null && m.getCaution().contains(c.getSideEffect_name())){ // 내 약의 유효성분이 기존 약 유효성분에 포함되어 있는지
-                        System.out.println(m.getName()+" // 내 약 "+c.getTitle()+"부작용 : "+ c.getSideEffect_name());
                         cnt+=1;
                     }
                 }
-
             }
             hm.replace(m.getName(), cnt);
         }
-        System.out.println("\n\n\n");
-
-
         // Map.Entry 리스트 작성
 		List<Entry<String, Integer>> list_entries = new ArrayList<Entry<String, Integer>>(hm.entrySet());
-
         // 비교함수 Comparator를 사용하여 오름차순으로 정렬
 		Collections.sort(list_entries, new Comparator<Entry<String, Integer>>() {
-			// compare로 값을 비교
 			public int compare(Entry<String, Integer> obj1, Entry<String, Integer> obj2) {
-				// 오름 차순 정렬
 				return obj2.getValue().compareTo(obj1.getValue());
 			}
 		});
-        System.out.println("\n\n\n오름 차순 정렬");
-		// 결과 출력
+		// 피해야 할 약 결과 출력 :  AvoidList
 		for(Entry<String, Integer> entry : list_entries) {
             avoidList.put(entry.getKey(), entry.getValue());
-			System.out.println(entry.getKey() + " : " + entry.getValue());
             if(avoidList.size()>=10) break;
 		}
-        
 		return ResponseEntity.ok(avoidList);
 	}
 
-    // @GetMapping("/dashboard/sideEffectMedi")
-    // public ResponseEntity<Object> getSideEffectMediPerUser(@RequestParam(value="id") String userid){
-    //     System.out.println("\n\ntakingUser\n\n\n");
-    //     return ResponseEntity.ok(calendarService.getTakingPerUser(userid));
-    // }
-
+    // 부작용 있는 약 sideEffectMedi
     @GetMapping("/dashboard/sideEffectMedi")
     public ResponseEntity<Object> getSideEffectMediPerUser(@RequestParam(value="id") String userid){
-        System.out.println("\n\ntakingUser\n\n\n");
         return ResponseEntity.ok(calendarService.getByUserid(userid));
     }
 

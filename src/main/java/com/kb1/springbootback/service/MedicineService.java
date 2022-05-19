@@ -16,12 +16,9 @@ public class MedicineService {
     @Autowired
     private MedicineRepository medicineRepository;
 
-    // name으로 Medicine 정보 가져오기
+    // 약 name으로 Medicine 정보 가져오기
     public Medicine getMedicineByName(String name) {
-        System.out.println("name으로 Medicine 정보 가져오기  SERVICE~~~ NAME IS"+name);
-
         return medicineRepository.findOneByName(name);
-
     }
 
     // name로 Medicine 있는지 확인
@@ -29,24 +26,15 @@ public class MedicineService {
         return medicineRepository.existsByName(name);
     }
 
-    // medicine LIST 다 가져오기
+    // medicine LIST 모두 가져오기
     public List<Medicine> findAll(){
         List<Medicine> list = medicineRepository.findAll();
-        System.out.println("medicine LIST 다 가져오기");
-        
         return list;
     }
 
     // 선택된 리뷰필터링 가져오기 
     public List<?> getMedicineByButtonFilter(String shapeId, String colorId, String formulationId, String dividelineId) {
-
         List<Medicine> list = medicineRepository.findFromTo(shapeId, colorId, formulationId, dividelineId);
-        System.out.println("선택된 리뷰필터링 가져오기   SERVICE~~~ "+shapeId+colorId+formulationId+dividelineId);
-
-        System.out.println("service~~~~~~~~~~~~~list~~~~~~~~~ "+list);
         return list;
-        
-
     }
-
 }

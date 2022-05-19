@@ -15,6 +15,7 @@ import org.hibernate.annotations.DynamicUpdate;
 @DynamicUpdate
 @NoArgsConstructor
 public class Calendar implements Serializable {
+
     @Id
     @Column(name = "title")
     private String title;
@@ -22,19 +23,15 @@ public class Calendar implements Serializable {
     @Column(name = "user_id")
     private String userid;
 
-    
     @Column(name = "sideEffect_name")
     private String sideEffect_name;
 
-    // start date
     @Column(name = "start")
     private Date start;
 
-    // end date
     @Column(name = "end")
     private Date end;
 
-    // color
     @Column(name = "color")
     private String color;
 

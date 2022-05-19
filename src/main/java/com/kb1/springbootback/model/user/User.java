@@ -43,10 +43,6 @@ public class User {
 	@Column(name = "user_password")
 	private String password;
 
-	// user_phoneNo
-	// @Column(name = "user_phoneNo")
-	// private String phone;
-
 	// user_sex
 	@Enumerated(EnumType.STRING)
 	@Column(name = "user_sex")

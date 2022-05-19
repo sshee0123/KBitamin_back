@@ -19,47 +19,33 @@ public class UserController {
 
     // 회원 정보 가져오기
     @GetMapping("/user")
-    // @PreAuthorize("hasAnyRole('ROLE_USER, ROLE_ADMIN')")
     public ResponseEntity<User> getUserById(@RequestParam(value="id") String userid) {
-        User user = userService.getUserById(userid);
 
+        User user = userService.getUserById(userid);
         if(user == null) {
             throw new ResourceNotFoundException("This user does not already exist.");
         }
-
-       // return new ResponseEntity<User>(HttpStatus.OK);
         return ResponseEntity.ok(user);
     }
 
-
     // 회원 정보 업데이트
     @PutMapping("/user/{userId}")
-    // @PreAuthorize("hasAnyRole('ROLE_USER, ROLE_ADMIN')")
     public ResponseEntity<User> updateUser(@PathVariable String userId, @RequestBody User updatedUser){
-        // email 이미 존재하는지 확인
-        // if (userService.existsByEmail(updatedUser.getEmail())) {
-        //     throw new ResourceNotFoundException("Error: Email is already in use!");
-        // }
 
-        System.out.println("\n\n\n\n\n\n\n update : userid? "+updatedUser.getBirthDate());
         return ResponseEntity.ok(userService.updateUserInfo(userId, updatedUser));
     }
 
     // 회원 탈퇴
     @DeleteMapping("/user/{userId}")
     @Transactional
-    // @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     public ResponseEntity<User> deleteUser(@PathVariable String userId) {
 
         User user = userService.getUserById(userId);
-
         if (user == null) {
             throw new ResourceNotFoundException("This user does not already exist.");
         }
-
         userService.deleteUserById(userId);
 
         return new ResponseEntity<User>(HttpStatus.NO_CONTENT);
     }
-
 }

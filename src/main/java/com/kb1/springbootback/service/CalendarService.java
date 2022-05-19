@@ -15,31 +15,25 @@ public class CalendarService{
     @Autowired
     private CalendarRepository calendarRepository;
 
-    // calendar LIST 
+    // userid로 calendar LIST 가져오기
     public List<Calendar> getByUserid(String userid){
-        System.out.println("Calendar LIST �� ��������");
         List<Calendar> list = calendarRepository.getByUserid(userid);
-        
         return list;
     }
-
+    // userid로 복용 calendar LIST 가져오기
     public Object getTakingPerUser(String userid){
         List<Object> list = calendarRepository.getTakingByUserid(userid);
         return list;
     }
 
+    // 사용자 복용 정보 update
     public void updateTaking(String id, String title, Date start, String sideEffectName) {
-
-        System.out.println("\n\n\n\n\nupdateTaking "+id+title+start+sideEffectName);
         calendarRepository.updateTakingByUserid(id, title, start,sideEffectName);
-        
     }
 
+    // 사용자 복용 정보 delete
     public void deleteTaking(String id, String title, Date start) {
-
-        System.out.println("\n\n\n\n\n"+id+title+start);
         Calendar delTaking = calendarRepository.getOneTakingByUserid(id, title, start);
-        System.out.println("Service : deleteTaking  "+delTaking);
         calendarRepository.delete(delTaking);
     }
 }

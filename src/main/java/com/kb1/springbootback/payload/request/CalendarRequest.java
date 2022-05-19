@@ -8,7 +8,6 @@ import java.util.Date;
 public class CalendarRequest {
 
     // Calendar 등록 할 때 필요한 정보들
-    // 유저 아이디
     private String userid;
 
     private String title;
